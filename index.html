@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Assinatura Axess</title>
+</head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<body >
+	<div class="container" align="center">
+		<h4>Gerador de Assinaturas de Email</h4>
+		<hr>
+		<div class="row">
+			<div class="col-sm">
+				<form>
+				  <div class="row">
+				    <div class="col" >
+				      <input id="nomeOrigem" type="text" class="form-control" placeholder="Nome e um sobrenome (ex. João das Neves)" ng-model="nome" oninput="capNome()">
+				    </div>
+				  </div>
+				  <br>
+				  <div class="row">
+				  	<div class="col">
+				      <input id="departamentoOrigem" type="text" class="form-control" placeholder="Departamento" oninput="capDepartamento()">
+				    </div>
+				    <div class="col">
+				      <input id="telefoneOrigem" type="text" class="form-control" placeholder="Telefone" oninput="capTel()">
+				    </div>
+				  </div>
+				  <br>
+				  <div class="row">
+				    <div class="col">
+				      <input id="emailOrigem" type="text" class="form-control" placeholder="Email" oninput="capEmail()">
+				    </div>
+				  </div>
+				  <br>
+				  <div class="row">
+				    <div class="col">
+				      <input id="urlOrigem" type="text" class="form-control" placeholder="URL para o chat direto (Telegram, Whatsapp ou Skipe)" oninput="capUrl()">
+				    </div>
+				  </div>
+				  <br>
+				  <div class="row">
+				  	<div class="col">
+				  		<button type="button" class="btn btn-secondary btn-sm" id="enviar" onclick="dataSave()">Gerar assinatura</button>
+				  	</div>
+				  </div>
+				</form>	
+			</div>
+			<div class="col-sm">
+				<div class="row">
+					<div class="col">
+						<table style="text-align:right; padding-right:10px; padding-top:5px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+		                    <tbody>
+		                        <tr>
+		                            <td valign="right" style="background-color: #ffffff; padding-right:0px; padding-top:5px;">
+		                                <a href="https://axes.com.br" style="margin-left: 5px;">
+		                                    <img align="right" alt="" src="https://axes.com.br/wp-content/uploads/2019/05/ax-Brand-AssinaturaEmail-H35-W170.jpg" style="width: 170px; height: 35px;"></a>
+		                            </td>
+		                        </tr>
+		                        <!-- Website ----------------------------------------------->
+		                        <tr>
+		                            <td style="color: #8491A5; font-size:12px; padding-top:10px; letter-spacing:1px; text-transform:none;">axes.com.br</td>
+		                        </tr>
+		                        <!-- Endereço ---------------------------------------------->
+		                        <tr>
+		                            <td style="font-size:10px; line-height:16px; color: #8491A5; padding-top:5px;">Av. Brasil, 1000, Santo Agostinho
+		                                <br>Manaus, AM, 69036-595</td>
+		                        </tr>
+		                        <!-- Redes Sociais ----------------------------------------->
+		                        <tr>
+		                            <td style="padding-top:10px;">
+		                                <a href="https://www.facebook.com/axesbrasil/" style="margin-right: 2px;">
+		                                    <img alt="" src="https://axes.com.br/wp-content/uploads/2019/05/ax-Brand-AssinaturaEmail-Facebook-Neutro-01.jpg" style="width: 25px; height: 25px; border-radius: 50%;" height="15" width="15"></a>
+		                                <a href="https://www.instagram.com/axesbrasil/" style="margin-right: 2px;">
+		                                    <img alt="" src="https://axes.com.br/wp-content/uploads/2019/05/ax-Brand-AssinaturaEmail-Instagram-Neutro-01.jpg" style="width: 25px; height: 25px; border-radius: 50%;" height="15" width="15"></a>
+		                                <a href="https://www.linkedin.com/company/axesbrasil/" style="margin-right: 2px;">
+		                                    <img alt="" src="https://axes.com.br/wp-content/uploads/2019/05/ax-Brand-AssinaturaEmail-Linkedin-Neutro-01.jpg" style="width: 25px; height: 25px; border-radius: 50%;" height="15" width="15"></a>
+		                                <a href="https://www.youtube.com/channel/UCvf7-t4aZuBxJrZagaT7rfw/featured">
+		                                    <img alt="" src="https://axes.com.br/wp-content/uploads/2019/05/ax-Brand-AssinaturaEmail-Youtube-Neutro-01.jpg" style="width: 25px; height: 25px; border-radius: 50%;" height="15" width="15"></a>
+		                            </td>
+		                        </tr>
+		                    </tbody>
+		                </table>
+					</div>
+					<div class="col" id="dados">
+						<table border="0px" cellpadding="0" cellspacing="0" width="100%">
+		                    <tbody>
+		                        <!-- Nome e Sobrenome -------------------------------------------------->
+		                        <tr>
+		                            <td style="font-size:18px; line-height:20px; color: #0052CB; padding-top:5px; font-weight:bold;" valign="bottom" id="nomeDestino"> </td>
+		                        </tr>
+		                        <!-- Departamento ------------------------------------------------------>
+		                        <tr>
+		                            <td style="font-size:12px; line-height:24px; color: #8491A5; letter-spacing:3px; text-transform:uppercase;" valign="bottom" id="departamentoDestino"></td>
+		                        </tr>
+		                        <!-- Telefone ---------------------------------------------------------->
+		                        <tr>
+		                            <td><a style="font-size:12px; line-height:24px; color: #0065FF; padding-top:5px; text-decoration:none;" valign="bottom" id="telefoneDestino"></a></td>
+		                        </tr>
+		                        <!-- Email ------------------------------------------------------------->
+		                        <tr>
+		                            <td><a href="mailto:joe@example.com?subject=AddAssunto" style="font-size:12px; line-height:20px; color: #0065FF; text-decoration:none;" id="emailDestino"></a></td>
+		                        </tr>
+		                        <!-- Chat Direto (Skype, Messenger, Whatsapp, Telegram) ---------------->
+		                        <tr>
+		                            <td><a id="urlDestino" href="https://telegram.me/kalvner" style="font-size:12px; line-height:20px; color: #0065FF; text-decoration:none;"></a></td>
+		                        </tr>
+		                    </tbody>
+		                </table>
+					</div>
+				</div>
+				<div class="row">
+				
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="js/funcoes.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</body>
+</html>
